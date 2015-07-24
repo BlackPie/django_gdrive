@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        {% for document in object_list %}
+            <tr>
+                <td>
+                    {% if document.updatable %}
+                        <a href={% url 'update_document' document.id %}>update</a>
+                    {% else %}
+                        update
+                    {% endif %}
+                </td>
+                <td>
+                    {{ document.title|slice:":80" }}
+                </td>
+                <td>
+                    {{ document.url }}
+                </td>
+                <td>
+                    {{ document.status }}
+                </td>
+            </tr>
+        {% empty %}
+            No documents yet
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        User:{{ request.user }} <a href="{% url 'logout' %}">Logout</a><br><br>
+        <a href="{% url 'create_document' %}">Create document</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+
+    <br>
+    <br>
+    <br>
+
+    {% block content %}
+    {% endblock content%}
+</body>
+</html>

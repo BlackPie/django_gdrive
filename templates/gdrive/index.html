@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+{% if user.is_authenticated %}
+    User:{{ request.user }} <a href="{% url 'logout' %}">Logout</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a>
+{% endif %}
+
+<br>
+<br>
+<br>
+<br>
+
+    <table>
+        {% for x in doc_list %}
+            <!--{% for owner in x.owners %}-->
+                <!--{{ owner.displayName }},-->
+            <!--{% endfor %}-->
+            <!--<br>-->
+            <!--{{ x.title}}-->
+            <!--<br>-->
+            <!--{{ x.version }}-->
+            <!--<br>-->
+            <!--{{ x.createdDate }}-->
+            <!--<br>-->
+            <!--{{ x.editable }}-->
+            <!--<br>-->
+            <!--{{ x.userPermission }}-->
+            <!--<br>-->
+            <!--{{ x.shared }}-->
+            <!--<br>-->
+
+            <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;<br>-->
+            <tr>
+                <td>
+                    {{ x.title|slice:":80" }}
+                </td>
+                <td>
+                    {{ x.selfLink }}
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+</body>
+</html>
